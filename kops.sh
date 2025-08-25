@@ -11,9 +11,9 @@ chmod +x kops-linux-amd64 kubectl
 mv kubectl /usr/local/bin/kubectl
 mv kops-linux-amd64 /usr/local/bin/kops
 
-aws s3api create-bucket --bucket poojiambala.k8s.local --region us-east-1
-aws s3api put-bucket-versioning --bucket poojiambala.k8s.local --region us-east-1 --versioning-configuration Status=Enabled
-export KOPS_STATE_STORE=s3://poojiambala.k8s.local
-kops create cluster --name poojitha.k8s.local --zones us-east-1a --master-count=1 --master-size t2.medium --node-count=2 --node-size t2.micro --image ami-0fb0b230890ccd1e6
+aws s3api create-bucket --bucket pooji0 --region us-east-1
+aws s3api put-bucket-versioning --bucket pooji0 --region us-east-1 --versioning-configuration Status=Enabled
+export KOPS_STATE_STORE=s3://pooji0
+kops create cluster --name master.k8s.local --zones us-east-1a --master-count=1 --master-size t2.medium --node-count=2 --node-size t2.micro --image ami-0fb0b230890ccd1e6
 
-kops update cluster --name poojitha.k8s.local --yes --admin
+kops update cluster --name master.k8s.local --yes --admin
